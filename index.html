@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <title>Postman v2.0</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <script>
+        var qtd = 1;
+        $(document).ready(function () {
+            $('#btn_add').click(function () {
+                qtd++;
+                $('#inputs').append('<p><input type="text" id="input' + qtd + '" name="input' + qtd + '"></p>');
+            });
+
+            $('#form').submit(function (e) {
+                enviaRequisicao();
+                return false;
+            });
+
+            function enviaRequisicao() {
+                var urlInput = $('#url').val();
+                //var form = $(this);
+                var tipo = $('#metodo').children("option:selected").val();
+
+                $.ajax({
+                    url: urlInput,
+                    //data: '',//form.serialize(),
+                    type: tipo,
+                    dataType: "json",
+                    success: function (resp) {
+                        $('#resultado').text(resp.code);
+                        for (var _i in resp.dados) {
+                            for (var _r in resp.dados[_i]) {
+                                $('#resultado').append(resp.dados[_i][_r] + '</br>');
+                            }
+                            $('#resultado').append('</br>');
+                        }
+                        console.log(resp);
+                    },
+                    error: function (e) {
+                        alert('Error: ' + e);
+                    }
+                });
+            }
+        });
+    </script>
+
+    <style>
+        #controles {
+            display: flex;
+            align-items: center;
+        }
+
+        #controles div {
+            padding: 25px 25px 25px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="titulo">
+        <h2>
+            Postman v2.0
+        </h2>
+    </div>
+
+    <div>
+        <button id="btn_add" class="btn btn-primary">Adicionar campo</button>
+    </div>
+
+    <div>
+        <form id="form">
+            <div id="controles">
+                <div class="">
+                    <label>URL: </label>
+                    <input type="text" id="url" style="width: 500px">
+                </div>
+
+                <div>
+                    <select id="metodo">
+                        <option value="GET">GET</option>
+                        <option value="POST">POST</option>
+                    </select>
+                </div>
+
+                <div>
+                    <button id="btn_call" class="btn btn-primary">Enviar</button>
+                </div>
+            </div>
+
+            <div id="inputs">
+                <input type="text" id="input1" name="input1">
+            </div>
+        </form>
+    </div>
+
+    <pre>
+        <code id="resultado",0>
+            resultado aqui
+        </code>
+    </pre>
+</body>
+
+</html>
