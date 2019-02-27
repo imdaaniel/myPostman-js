@@ -39,13 +39,15 @@
                     type: tipo,
                     dataType: "json",
                     success: function (resp) {
-                        $('#resultado').text(resp.code);
+                        $('#resultado').text(JSON.stringify(resp));
+						/*
                         for (var _i in resp.dados) {
                             for (var _r in resp.dados[_i]) {
                                 $('#resultado').append(resp.dados[_i][_r] + '</br>');
                             }
                             $('#resultado').append('</br>');
                         }
+						*/
                         console.log(resp);
                     },
                     error: function (e) {
