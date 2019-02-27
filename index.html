@@ -34,12 +34,12 @@
                 var tipo = $('#metodo').children("option:selected").val();
 
                 $.ajax({
-                    url: urlInput,
+                    url: "http://" + urlInput,
                     //data: '',//form.serialize(),
                     type: tipo,
                     dataType: "json",
                     success: function (resp) {
-                        $('#resultado').text(JSON.stringify(resp));
+                        $('#resultado').html(JSON.stringify(resp, null, 4));
 						/*
                         for (var _i in resp.dados) {
                             for (var _r in resp.dados[_i]) {
