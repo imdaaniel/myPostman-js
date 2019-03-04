@@ -3,77 +3,21 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Postman v2.0</title>
+    <title>Postman by Daniel</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
 
-    <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-    <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
-    <script>
-        var qtd = 1;
-        $(document).ready(function () {
-            $('#btn_add').click(function () {
-                qtd++;
-                $('#inputs').append('<p><input type="text" id="input' + qtd + '" name="input' + qtd + '"></p>');
-            });
-
-            $('#form').submit(function (e) {
-                enviaRequisicao();
-                return false;
-            });
-
-            function enviaRequisicao() {
-                var urlInput = $('#url').val();
-                //var form = $(this);
-                var tipo = $('#metodo').children("option:selected").val();
-
-                $.ajax({
-                    url: "http://" + urlInput,
-                    //data: '',//form.serialize(),
-                    type: tipo,
-                    dataType: "json",
-                    success: function (resp) {
-                        $('#resultado').html(JSON.stringify(resp, null, 4));
-						/*
-                        for (var _i in resp.dados) {
-                            for (var _r in resp.dados[_i]) {
-                                $('#resultado').append(resp.dados[_i][_r] + '</br>');
-                            }
-                            $('#resultado').append('</br>');
-                        }
-						*/
-                        console.log(resp);
-                    },
-                    error: function (e) {
-                        alert('Error: ' + e);
-                    }
-                });
-            }
-        });
-    </script>
-
-    <style>
-        #controles {
-            display: flex;
-            align-items: center;
-        }
-
-        #controles div {
-            padding: 25px 25px 25px 0;
-        }
-    </style>
+    <script src="js/script.js"></script>
 </head>
 
 <body>
     <div id="titulo">
         <h2>
-            Postman v2.0
+            Postman by Daniel
         </h2>
     </div>
 

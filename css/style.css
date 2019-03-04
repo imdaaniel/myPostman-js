@@ -1,0 +1,8 @@
+#controles {
+    display: flex;
+    align-items: center;
+}
+
+#controles div {
+    padding: 25px 25px 25px 0;
+}
