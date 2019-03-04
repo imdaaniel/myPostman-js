@@ -1,40 +1,52 @@
 var qtd = 1;
+
 $(document).ready(function () {
+    $('form').submit(false);
+
     $('#btn_add').click(function () {
         qtd++;
-        $('#inputs').append('<p><input type="text" id="input' + qtd + '" name="input' + qtd + '"></p>');
+        $('#inputs').append('<div><input type="text" name="key' + qtd + '" class="form-control"><input type="text" name="value' + qtd + '" class="form-control"></div>');
     });
 
-    $('#form').submit(function (e) {
-        enviaRequisicao();
-        return false;
-    });
-
-    function enviaRequisicao() {
+    $('#btn_call').click(function () {
         var urlInput = $('#url').val();
         //var form = $(this);
         var tipo = $('#metodo').children("option:selected").val();
-
+        var texto;
         $.ajax({
-            url: "http://" + urlInput,
+            url: "http://" + urlInput.replace("http://", ""),
             //data: '',//form.serialize(),
             type: tipo,
             dataType: "json",
             success: function (resp) {
-                $('#resultado').html(JSON.stringify(resp, null, 4));
-                /*
-                for (var _i in resp.dados) {
-                    for (var _r in resp.dados[_i]) {
-                        $('#resultado').append(resp.dados[_i][_r] + '</br>');
-                    }
-                    $('#resultado').append('</br>');
-                }
-                */
+                // if (resp.code == 200) {
+                //     for (i in resp.dados) {
+                //         texto += resp.dados[i];
+                //         if (typeof(resp.dados[i]) == Object) {
+                //             for (j in resp.dados[i]) {
+                //                 texto += resp.dados[i][j];
+                //                 if (typeof(resp.dados[i][j]) == Object) {
+                //                     for (k in resp.dados[i][j]) {
+                //                         texto += resp.dados[i][j][k];
+                //                     }
+                //                 }
+                //             }
+                //         }
+                //     }
+                // } else {
+                //     for (i in resp.erros) {
+                //         for (j in resp.erros[i]) {
+                //             texto += resp.erros[i][j];
+                //         }
+                //     }
+                // }
+                
+                $('#resultado').html("<pre><code>" + JSON.stringify(resp, null, 4) + "</code></pre>");
                 console.log(resp);
             },
             error: function (e) {
                 alert('Error: ' + e);
             }
         });
-    }
+    });
 });
