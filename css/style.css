@@ -6,3 +6,12 @@
 #controles div {
     padding: 25px 25px 25px 0;
 }
+
+body pre {
+    width: 60%;
+    height: 500px;
+}
+
+#inputs input {
+    width: 200px;
+}

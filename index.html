@@ -2,7 +2,7 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <title>Postman by Daniel</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -25,37 +25,38 @@
         <button id="btn_add" class="btn btn-primary">Adicionar campo</button>
     </div>
 
-    <div>
-        <form id="form">
-            <div id="controles">
-                <div class="">
-                    <label>URL: </label>
-                    <input type="text" id="url" style="width: 500px">
-                </div>
-
-                <div>
-                    <select id="metodo">
-                        <option value="GET">GET</option>
-                        <option value="POST">POST</option>
-                    </select>
-                </div>
-
-                <div>
-                    <button id="btn_call" class="btn btn-primary">Enviar</button>
-                </div>
+    <form id="form">
+        <div id="controles">
+            <div class="">
+                <label>URL: </label>
+                <input type="text" id="url" style="width: 600px" class="form-control">
             </div>
 
-            <div id="inputs">
-                <input type="text" id="input1" name="input1">
+            <div>
+                <label>Método</label>
+                <select id="metodo" class="form-control">
+                    <option value="GET">GET</option>
+                    <option value="POST">POST</option>
+                </select>
             </div>
-        </form>
+
+            <div>
+                <br>
+                <input type="submit" id="btn_call" class="btn btn-primary">
+            </div>
+        </div>
+
+        <div id="inputs">
+            <div>
+                <input type="text" name="key1" class="form-control">
+                <input type="text" name="value1" class="form-control">
+            </div>
+        </div>
+    </form>
+
+    <div id="resultado">
+
     </div>
-
-    <pre>
-        <code id="resultado",0>
-            resultado aqui
-        </code>
-    </pre>
 </body>
 
 </html>
