@@ -15,47 +15,53 @@
 </head>
 
 <body>
-    <div id="titulo">
-        <h2>
-            Postman by Daniel
-        </h2>
-    </div>
-
-    <div>
-        <button id="btn_add" class="btn btn-primary">Adicionar campo</button>
-    </div>
-
-    <form id="form">
-        <div id="controles">
-            <div class="">
-                <label>URL: </label>
-                <input type="text" id="url" style="width: 600px" class="form-control">
+    <div class="container">
+        <form id="form">
+            <div id="titulo">
+                <h2>
+                    Postman by Daniel
+                </h2>
             </div>
 
-            <div>
-                <label>Método</label>
-                <select id="metodo" class="form-control">
-                    <option value="GET">GET</option>
-                    <option value="POST">POST</option>
-                </select>
+            <div id="controles">
+                <div class="">
+                    <label>URL: </label>
+                    <input type="text" id="url" style="width: 600px" class="form-control">
+                </div>
+
+                <div>
+                    <label>Método</label>
+                    <select id="metodo" class="form-control">
+                        <option value="GET">GET</option>
+                        <option value="POST">POST</option>
+                    </select>
+                </div>
+
+                <div>
+                    <br>
+                    <input type="submit" id="btn_call" class="btn btn-primary">
+                </div>
             </div>
 
-            <div>
-                <br>
-                <input type="submit" id="btn_call" class="btn btn-primary">
-            </div>
+
+            <table class="table table-bordered" id="campos_dinamicos">
+                <tr>
+                    <td>
+                        <input type="text" class="form-control" name="key1" placeholder="Parâmetro">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" name="value1" placeholder="Valor">
+                    </td>
+                    <td>
+                        <button id="add" class="form-control btn btn-success">Adicionar campos</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+        <div id="resultado">
+            
         </div>
-
-        <div id="inputs">
-            <div>
-                <input type="text" name="key1" class="form-control">
-                <input type="text" name="value1" class="form-control">
-            </div>
-        </div>
-    </form>
-
-    <div id="resultado">
-
     </div>
 </body>
 

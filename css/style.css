@@ -12,6 +12,13 @@ body pre {
     height: 500px;
 }
 
-#inputs input {
-    width: 200px;
+#resultado {
+    width: 121.5vh;
+    height: 50vh;
+    background-color: rgb(233, 233, 233);
+}
+
+#resultado pre {
+    width: inherit;
+    height: inherit;
 }
