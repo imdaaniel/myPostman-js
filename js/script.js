@@ -25,14 +25,18 @@ $(document).ready(function () {
             $('#inputs').append('<input type="hidden" id="novo'+j+'" name="' + $('#campos_dinamicos input#key'+j+'').val() + '" value="' + $('#campos_dinamicos tr td input#value'+j+'').val() + '" />');
             $('#campos_dinamicos input#key'+j, '#campos_dinamicos input#value'+j).attr('name', null);   
         }
-
+        
         $.ajax({
             url: "http://" + url.replace("http://", ""),
             type: $('#metodo').children("option:selected").val(),
             data: $(this).serialize(),
             dataType: "json",
-            success: function (resposta) {            
-                $('#resultado').html('<pre><code>' + JSON.stringify(resposta, null, 4) + '</code></pre>');
+            success: function (resposta) {       
+                try {
+                    $('#resultado').html('<pre><code>' + JSON.stringify(resposta, null, 4) + '</code></pre>');
+                } catch (e) {
+                    alert("deu ruim: " + e);
+                }
                 // console.log(resposta);
             },
             error: function (e) {
