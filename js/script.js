@@ -13,6 +13,13 @@ $(document).ready(function () {
     });
 
     $('#form').submit(function() {
+        var url = $('#url').val();
+
+        if (!url) {
+            alert('URL inválida.');
+            return false;
+        }
+
         $('#inputs').html('');
         for (var j = 1; j <= i; j++) {
             $('#inputs').append('<input type="hidden" id="novo'+j+'" name="' + $('#campos_dinamicos input#key'+j+'').val() + '" value="' + $('#campos_dinamicos tr td input#value'+j+'').val() + '" />');
@@ -20,7 +27,7 @@ $(document).ready(function () {
         }
 
         $.ajax({
-            url: "http://" + $('#url').val().replace("http://", ""),
+            url: "http://" + url.replace("http://", ""),
             type: $('#metodo').children("option:selected").val(),
             data: $(this).serialize(),
             dataType: "json",
