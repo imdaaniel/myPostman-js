@@ -1,1 +1,1 @@
-Criação de sistema para fazer requisições e visualizar seus respectivos resultados.
+Sistema para fazer requisições HTTP e visualizar seus resultados.
