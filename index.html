@@ -26,7 +26,7 @@
             <div id="controles">
                 <div class="">
                     <label>URL: </label>
-                    <input type="text" id="url" style="width: 600px" class="form-control">
+                    <input type="text" id="url" style="width: 600px" class="form-control" placeholder="www.google.com">
                 </div>
 
                 <div>
@@ -39,29 +39,29 @@
 
                 <div>
                     <br>
-                    <input type="submit" id="btn_call" class="btn btn-primary">
+                    <button type="submit" id="btn_call" class="btn btn-primary">Enviar</button>
                 </div>
             </div>
 
 
             <table class="table table-bordered" id="campos_dinamicos">
-                <tr>
+                <tr id="linha1">
                     <td>
-                        <input type="text" class="form-control" name="key1" placeholder="Parâmetro">
+                        <input type="text" class="form-control" id="key1" placeholder="Parâmetro">
                     </td>
                     <td>
-                        <input type="text" class="form-control" name="value1" placeholder="Valor">
+                        <input type="text" class="form-control" id="value1" placeholder="Valor">
                     </td>
                     <td>
-                        <button id="add" class="form-control btn btn-success">Adicionar campos</button>
+                        <button type="button" id="add" class="form-control btn btn-success">Adicionar campos</button>
                     </td>
                 </tr>
             </table>
+
+            <div id="inputs"></div>
         </form>
 
-        <div id="resultado">
-            
-        </div>
+        <div id="resultado"></div>
     </div>
 </body>
 
