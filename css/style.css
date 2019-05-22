@@ -4,7 +4,7 @@
 }
 
 #controles div {
-    padding: 25px 25px 25px 0;
+    padding: 10px 10px 10px 0;
 }
 
 body pre {
@@ -23,7 +23,20 @@ body pre {
     height: inherit;
 }
 
+#links {
+    text-align: right;
+    margin-right: -30px;
+}
+
 #links img {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
+}
+
+#url {
+    width: 600px;
+}
+
+#metodo {
+    width: 90px;
 }

@@ -40,21 +40,22 @@ $(document).ready(function () {
             url: 'http://' + url.replace('http://', ''),
             type: $('#metodo').children('option:selected').val(),
             data: $(this).serialize(),
-            // dataType: 'json',
+            // dataType: 'html',
             success: function (resposta, status, xhr) {
-                //var ct = xhr.getResponseHeader("content-type") || "";
-                //
-                //if (ct.indexOf('html') > -1) {
-                //    $('#resultado').html('<pre><code>' + resposta + '</code></pre>');
-                //} else if (ct.indexOf('json') > -1) {
-                //    $('#resultado').html('<pre><code>' + JSON.stringify(resposta, null, 4) + '</code></pre>');
-                //}
+                // var ct = xhr.getResponseHeader("content-type") || "";
+                
+                // if (ct.indexOf('html') > -1) {
+                //    $('#resultado').html(resposta);
+                // } else if (ct.indexOf('json') > -1) {
+                //    $('#resultado').html(JSON.stringify(resposta, null, 4));
+                // }
                 // console.log(resposta);
                 
-                $('#resultado').html('<pre><code>' + JSON.stringify(resposta, null, 4) + '</code></pre>');
+                $('#resultado').html(JSON.stringify(resposta, null, 4));
             },
             error: function (e) {
-                alert('Error: ' + e);
+                console.log(e);
+                alert('DEU ERRO: ' + e);
             }
         });
     });
