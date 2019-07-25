@@ -4,12 +4,21 @@ $(document).ready(function () {
 
     $('#add').click(function () {
         i++;
-        $('#campos_dinamicos').append('<tr id="linha' + i + '"><td><input type="text" class="form-control" id="key' + i + '" placeholder="Parâmetro"></td><td><input type="text" class="form-control" id="value' + i + '" placeholder="Valor"></td><td><button id="' + i + '" type"button" class="btn btn-danger remove">X</button></td></tr>');
+        $('#campos_dinamicos').append(
+            `<tr id="linha${i}">` +
+                `<td>` +
+                    `<input type="text" class="form-control" id="key${i}" placeholder="Parâmetro">` +
+                `</td>` +
+                `<td>` +
+                    `<input type="text" class="form-control" id="value${i}" placeholder="Valor"></td><td><button id="${i}" type"button" class="btn btn-danger remove">X</button>` +
+                `</td>` +
+            `</tr>`
+        .trim());
     });
 
     $(document).on('click', '.remove', function () {
         var id_botao = $(this).attr('id');
-        $('#linha' + id_botao).remove();
+        $(`#linha${id_botao}`).remove();
     });
 
     $('#move').click(function () {
@@ -32,29 +41,28 @@ $(document).ready(function () {
 
         $('#inputs').html('');
         for (var j = 1; j <= i; j++) {
-            $('#inputs').append('<input type="hidden" id="novo' + j + '" name="' + $('#campos_dinamicos input#key' + j + '').val() + '" value="' + $('#campos_dinamicos tr td input#value' + j + '').val() + '" />');
-            $('#campos_dinamicos input#key' + j, '#campos_dinamicos input#value' + j).attr('name', null);
+            $('#inputs').append(
+                `<input type="hidden" id="novo${j}" name="${$(`#campos_dinamicos input#key${j}`).val()}" value="${$(`#campos_dinamicos tr td input#value${j}`).val()}" />`
+            );
+            $(`#campos_dinamicos input#key${j}`, `#campos_dinamicos input#value${j}`).attr('name', null);
         }
 
         $.ajax({
             url: 'http://' + url.replace('http://', ''),
             type: $('#metodo').children('option:selected').val(),
             data: $(this).serialize(),
-            // dataType: 'json',
             success: function (resposta, status, xhr) {
-                //var ct = xhr.getResponseHeader("content-type") || "";
-                //
-                //if (ct.indexOf('html') > -1) {
-                //    $('#resultado').html('<pre><code>' + resposta + '</code></pre>');
-                //} else if (ct.indexOf('json') > -1) {
-                //    $('#resultado').html('<pre><code>' + JSON.stringify(resposta, null, 4) + '</code></pre>');
-                //}
-                // console.log(resposta);
-                
-                $('#resultado').html('<pre><code>' + JSON.stringify(resposta, null, 4) + '</code></pre>');
+                var tipo = xhr.getResponseHeader("content-type") || "";
+                console.table(xhr)
+                $('#resultado').html(
+                    `<pre>` +
+                        `<textarea disabled>${(tipo.indexOf('html') > -1) ? resposta : JSON.stringify(resposta, null, 4)}</textarea>` +
+                    `</pre>`
+                .trim());
             },
-            error: function (e) {
-                alert('Error: ' + e);
+            error: function (erro) {
+                alert('Erro')
+                console.table(erro)
             }
         });
     });
